@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import Contact from '../components/home/Contact.astro';
+---
+
+<Layout title={`Contacto - ${siteConfig.info_basica.nombre}`}>
+	<Header />
+	<main>
+		<Contact />
+	</main>
+	<Footer />
+</Layout>

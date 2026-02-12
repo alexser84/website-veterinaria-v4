@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import siteConfig from '../data/siteConfig.json';
+
+const paleta = siteConfig.estilo.paleta;
+---
+
+<Layout title={`Nosotros - ${siteConfig.info_basica.nombre}`}>
+	<Header />
+	<main class="py-24">
+		<div class="container mx-auto px-6">
+			<h1 class={`text-5xl font-bold mb-12 ${paleta === 'urban' ? 'font-bebas' : ''}`}>Nuestra Historia</h1>
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6 text-lg opacity-80">
+          <p>
+            Fundada en {siteConfig.info_basica.año_fundacion}, nuestra clínica nació con un propósito claro: elevar el estándar del cuidado animal en {siteConfig.info_basica.ciudad}.
+          </p>
+          <p>
+            Desde entonces, hemos navegado por innumerables desafíos, siempre guiados por nuestro amor incondicional hacia los animales y nuestro compromiso con la excelencia médica.
+          </p>
+          <div class="pt-8 grid grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-3xl font-bold text-primary mb-2">5+</h4>
+              <p>Años de experiencia</p>
+            </div>
+            <div>
+              <h4 class="text-3xl font-bold text-primary mb-2">2000+</h4>
+              <p>Mascotas felices</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-2xl">
+          <img src={`/images/gallery/clinic.jpg`} alt="Nuestra clínica" class="w-full h-auto" />
+        </div>
+      </div>
+		</div>
+	</main>
+	<Footer />
+</Layout>

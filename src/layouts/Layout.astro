@@ -1,0 +1,49 @@
+---
+import siteConfig from '../data/siteConfig.json';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+  title = `${siteConfig.info_basica.nombre} - Veterinaria en ${siteConfig.info_basica.ciudad}`,
+  description = `Clínica veterinaria en ${siteConfig.info_basica.ciudad} especializada en ${siteConfig.info_basica.especialidades.join(', ')}.`
+} = Astro.props;
+
+const paleta = siteConfig.estilo.paleta;
+
+const fontConfigs = {
+  oceano: 'https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;500&display=swap',
+  sunset: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&family=Inter:wght@400;500&display=swap',
+  forest: 'https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&family=Source+Sans+3:wght@400;500&display=swap',
+  urban: 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Roboto:wght@400;500&display=swap'
+};
+---
+
+<!doctype html>
+<html lang="es" data-theme={paleta}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={fontConfigs[paleta as keyof typeof fontConfigs]} rel="stylesheet" />
+
+    <!-- SEO -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_CL" />
+	</head>
+	<body class={`theme-${paleta}`}>
+		<slot />
+	</body>
+</html>

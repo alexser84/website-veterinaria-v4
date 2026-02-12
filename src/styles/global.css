@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --transition-base: 0.3s ease;
+  }
+
+  /* Theme: Oceano */
+  [data-theme="oceano"] {
+    --primary: #0891B2;
+    --secondary: #0284C7;
+    --accent: #38BDF8;
+    --dark: #164E63;
+    --light: #CFFAFE;
+    --background: #F0F9FF;
+    --wave-1: #06B6D4;
+    --wave-2: #0EA5E9;
+    
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+  }
+
+  /* Theme: Sunset */
+  [data-theme="sunset"] {
+    --primary: #F97316;
+    --secondary: #FB923C;
+    --accent: #FDE047;
+    --tertiary: #F472B6;
+    --dark: #7C2D12;
+    --light: #FFF7ED;
+    --background: #FEF3C7;
+    
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  /* Theme: Forest */
+  [data-theme="forest"] {
+    --primary: #15803D;
+    --secondary: #16A34A;
+    --accent: #84CC16;
+    --tertiary: #365314;
+    --dark: #14532D;
+    --light: #DCFCE7;
+    --background: #F7FEE7;
+    --wood: #92400E;
+    
+    --font-heading: 'Literata', serif;
+    --font-body: 'Source Sans 3', sans-serif;
+  }
+
+  /* Theme: Urban */
+  [data-theme="urban"] {
+    --primary: #18181B;
+    --secondary: #71717A;
+    --accent: #FBBF24;
+    --highlight: #EF4444;
+    --dark: #09090B;
+    --light: #FAFAFA;
+    --background: #FFFFFF;
+    --concrete: #D4D4D8;
+    
+    --font-heading: 'Bebas Neue', cursive;
+    --font-subheading: 'Oswald', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-dark font-body;
+    transition: background-color var(--transition-base), color var(--transition-base);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Wave Animation */
+  @keyframes wave {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-5%) translateY(-2%); }
+  }
+
+  .animate-wave {
+    animation: wave 10s ease-in-out infinite;
+  }
+
+  /* Bubble Animation */
+  @keyframes bubble-float {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+  }
+
+  .bubble {
+    position: absolute;
+    bottom: -20px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: bubble-float linear infinite;
+  }
+
+  /* Sun Rays Animation */
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 60s linear infinite;
+  }
+
+  /* Leaf Fall */
+  @keyframes leaf-fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+  }
+
+  .leaf {
+    @apply absolute pointer-events-none;
+    animation: leaf-fall 10s ease-in infinite;
+  }
+
+  /* Urban Glitch */
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+  }
+
+  .hover-glitch:hover {
+    animation: glitch 0.3s infinite;
+  }
+}

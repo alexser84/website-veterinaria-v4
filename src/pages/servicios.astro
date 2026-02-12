@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import Services from '../components/home/Services.astro';
+import siteConfig from '../data/siteConfig.json';
+---
+
+<Layout title={`Servicios - ${siteConfig.info_basica.nombre}`}>
+	<Header />
+	<main>
+    <div class="bg-background py-16">
+      <div class="container mx-auto px-6">
+        <h1 class={`text-5xl font-bold ${siteConfig.estilo.paleta === 'urban' ? 'font-bebas' : ''}`}>Todos los Servicios</h1>
+      </div>
+    </div>
+		<Services />
+    <section class="py-24 bg-white">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-8">¿No encuentras lo que buscas?</h2>
+        <p class="mb-8 opacity-70">Contáctanos y evaluaremos el caso específico de tu mascota.</p>
+        <a href="/contacto" class="inline-block py-4 px-10 bg-primary text-white rounded-xl font-bold">Consultar Ahora</a>
+      </div>
+    </section>
+	</main>
+	<Footer />
+</Layout>

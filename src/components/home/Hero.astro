@@ -1,0 +1,145 @@
+---
+import siteConfig from '../../data/siteConfig.json';
+
+const paleta = siteConfig.estilo.paleta;
+const { nombre } = siteConfig.info_basica;
+---
+
+<section class="relative overflow-hidden min-h-[80vh] flex items-center">
+  {paleta === 'oceano' && (
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-cyan-400/20 to-sky-600/20 animate-wave"></div>
+      <svg class="absolute bottom-0 w-full h-32 fill-background" viewBox="0 0 1440 320">
+        <path d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,112C672,107,768,149,864,165.3C960,181,1056,171,1152,149.3C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div 
+          class="bubble" 
+          style={`left: ${Math.random() * 100}%; width: ${Math.random() * 20 + 10}px; height: ${Math.random() * 20 + 10}px; animation-duration: ${Math.random() * 5 + 5}s; animation-delay: ${Math.random() * 5}s;`}
+        ></div>
+      ))}
+    </div>
+  )}
+
+  {paleta === 'sunset' && (
+    <div class="absolute inset-0 z-0 bg-gradient-to-b from-yellow-200 via-orange-300 to-pink-300">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute inset-0 animate-rotate-slow opacity-20">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div class="absolute top-1/2 left-1/2 w-1 h-full bg-white origin-top" style={`transform: translate(-50%, -50%) rotate(${i * 30}deg);`}></div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {paleta === 'forest' && (
+    <div class="absolute inset-0 z-0 bg-lime-50 overflow-hidden">
+      <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-green-900/10 to-transparent"></div>
+      {Array.from({ length: 15 }).map((_, i) => (
+        <div 
+          class="leaf text-accent text-4xl" 
+          style={`left: ${Math.random() * 100}%; animation-delay: ${Math.random() * 10}s; animation-duration: ${Math.random() * 5 + 8}s;`}
+        >
+          🍃
+        </div>
+      ))}
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+    </div>
+  )}
+
+  {paleta === 'urban' && (
+    <div class="absolute inset-0 z-0 bg-light grayscale opacity-20" style="background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');">
+    </div>
+  )}
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="max-w-2xl">
+        <span class={`inline-block py-1 px-4 rounded-full text-sm font-bold mb-6 ${
+          paleta === 'oceano' ? 'bg-cyan-100 text-cyan-900 border border-cyan-200' :
+          paleta === 'sunset' ? 'bg-orange-100 text-orange-900 glow-sm' :
+          paleta === 'forest' ? 'bg-green-100 text-green-900' :
+          'bg-amber-400 text-black uppercase tracking-widest font-oswald'
+        }`}>
+          {paleta === 'oceano' && '🌊 Cuidado profesional para tu mascota'}
+          {paleta === 'sunset' && '✨ Donde cada mascota brilla'}
+          {paleta === 'forest' && '🌿 Creciendo juntos en salud natural'}
+          {paleta === 'urban' && '// PROFESIONALES CERTIFICADOS'}
+        </span>
+        <h1 class={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${
+          paleta === 'oceano' ? 'text-cyan-900' :
+          paleta === 'sunset' ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600' :
+          paleta === 'forest' ? 'text-green-950' :
+          'text-black uppercase font-bebas tracking-wider'
+        }`}>
+          {nombre}
+        </h1>
+        <p class={`text-xl mb-8 leading-relaxed ${
+          paleta === 'oceano' ? 'text-cyan-700 font-medium' :
+          paleta === 'sunset' ? 'text-orange-900' :
+          paleta === 'forest' ? 'text-green-800' :
+          'text-zinc-700 font-oswald'
+        }`}>
+          {paleta === 'oceano' && 'Navegando juntos hacia la salud de tu compañero.'}
+          {paleta === 'sunset' && 'Iluminando el camino hacia el bienestar animal.'}
+          {paleta === 'forest' && 'Cuidado integral que brota desde el corazón.'}
+          {paleta === 'urban' && '// TU CLÍNICA VETERINARIA DE CONFIANZA.'}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button class={`py-4 px-8 rounded-lg font-bold transition-all ${
+            paleta === 'oceano' ? 'bg-primary text-white hover:bg-dark shadow-md hover:scale-105' :
+            paleta === 'sunset' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-lg hover:scale-105 hover:brightness-110' :
+            paleta === 'forest' ? 'bg-primary text-white hover:bg-dark shadow-md rounded-br-3xl rounded-tl-3xl' :
+            'bg-black text-white hover:bg-amber-400 hover:text-black uppercase font-bebas tracking-widest px-10'
+          }`}>
+            Agendar Cita
+          </button>
+          <button class={`py-4 px-8 rounded-lg font-bold transition-all border-2 ${
+            paleta === 'oceano' ? 'border-primary text-primary hover:bg-primary/10' :
+            paleta === 'sunset' ? 'border-pink-300 text-pink-600 hover:bg-pink-50' :
+            paleta === 'forest' ? 'border-primary text-primary hover:bg-primary/10 rounded-br-3xl rounded-tl-3xl' :
+            'border-black text-black hover:bg-black hover:text-white uppercase font-bebas tracking-widest'
+          }`}>
+            Ver Servicios
+          </button>
+        </div>
+      </div>
+      
+      <div class="relative group">
+        <div class={`relative z-10 transition-transform duration-500 group-hover:scale-105 ${
+          paleta === 'oceano' ? 'rounded-wave overflow-hidden' :
+          paleta === 'sunset' ? 'rounded-full border-8 border-white/50 p-2' :
+          paleta === 'forest' ? 'rounded-3xl border-4 border-primary/20 p-2 overflow-hidden' :
+          'border-4 border-black p-2 rotate-3 hover:rotate-0'
+        }`}>
+          <img 
+            src={`/images/hero/${paleta}.jpg`}
+            alt="Mascota feliz" 
+            class={`w-full h-auto object-cover aspect-square ${
+              paleta === 'oceano' ? 'rounded-wave' :
+              paleta === 'sunset' ? 'rounded-full' :
+              paleta === 'forest' ? 'rounded-2xl' :
+              ''
+            }`}
+          />
+        </div>
+        {paleta === 'urban' && (
+          <div class="absolute -bottom-6 -right-6 bg-amber-400 text-black font-bebas text-3xl px-6 py-2 rotate-12 z-20">
+            PET CARE
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+    <div class={`w-6 h-10 border-2 rounded-full flex justify-center p-1 ${
+      paleta === 'urban' ? 'border-black' : 'border-current opacity-50'
+    }`}>
+      <div class={`w-1 h-2 rounded-full animate-bounce ${
+        paleta === 'urban' ? 'bg-black' : 'bg-current'
+      }`}></div>
+    </div>
+  </div>
+</section>

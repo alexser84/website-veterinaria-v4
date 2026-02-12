@@ -1,0 +1,113 @@
+---
+import siteConfig from '../../data/siteConfig.json';
+import { Facebook, Instagram, Twitter } from 'lucide-astro';
+
+const paleta = siteConfig.estilo.paleta;
+const { info_basica, servicios } = siteConfig;
+---
+
+<footer class={`relative pt-24 pb-12 overflow-hidden ${
+  paleta === 'oceano' ? 'bg-cyan-900 text-white' :
+  paleta === 'sunset' ? 'bg-orange-900 text-white' :
+  paleta === 'forest' ? 'bg-green-950 text-lime-100' :
+  'bg-black text-white border-t-8 border-amber-400'
+}`}>
+  {paleta === 'oceano' && (
+    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
+      <svg class="relative block w-full h-24 fill-background" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+      </svg>
+    </div>
+  )}
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 mb-16">
+      <div class="space-y-6">
+        <a href="/" class="block">
+          <span class={`text-3xl font-bold ${
+            paleta === 'urban' ? 'font-bebas tracking-tighter text-amber-400' : ''
+          }`}>
+            {info_basica.nombre}
+          </span>
+        </a>
+        <p class="opacity-70 leading-relaxed">
+          {paleta === 'oceano' && 'Navegando hacia la salud animal desde 2015.'}
+          {paleta === 'sunset' && 'Iluminando vidas con amor y profesionalismo.'}
+          {paleta === 'forest' && 'Cuidado natural para tu fiel compañero.'}
+          {paleta === 'urban' && '// RESULTADOS PROFESIONALES DESDE EL CORAZÓN DE LA CIUDAD.'}
+        </p>
+        <div class="flex gap-4">
+          <a href="#" class={`w-10 h-10 flex items-center justify-center rounded-full transition-all ${
+            paleta === 'urban' ? 'bg-white text-black hover:bg-amber-400' : 'bg-white/10 hover:bg-white/20'
+          }`}>
+            <Facebook size={20} />
+          </a>
+          <a href="#" class={`w-10 h-10 flex items-center justify-center rounded-full transition-all ${
+            paleta === 'urban' ? 'bg-white text-black hover:bg-amber-400' : 'bg-white/10 hover:bg-white/20'
+          }`}>
+            <Instagram size={20} />
+          </a>
+          <a href="#" class={`w-10 h-10 flex items-center justify-center rounded-full transition-all ${
+            paleta === 'urban' ? 'bg-white text-black hover:bg-amber-400' : 'bg-white/10 hover:bg-white/20'
+          }`}>
+            <Twitter size={20} />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class={`text-xl font-bold mb-6 ${
+          paleta === 'oceano' ? 'text-cyan-300' :
+          paleta === 'sunset' ? 'text-orange-300' :
+          paleta === 'forest' ? 'text-accent' :
+          'text-amber-400 uppercase font-oswald'
+        }`}>Navegación</h4>
+        <ul class="space-y-4 opacity-70">
+          <li><a href="/" class="hover:opacity-100 transition-opacity">Inicio</a></li>
+          <li><a href="/nosotros" class="hover:opacity-100 transition-opacity">Nosotros</a></li>
+          <li><a href="/servicios" class="hover:opacity-100 transition-opacity">Servicios</a></li>
+          <li><a href="/blog" class="hover:opacity-100 transition-opacity">Blog</a></li>
+          <li><a href="/contacto" class="hover:opacity-100 transition-opacity">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class={`text-xl font-bold mb-6 ${
+          paleta === 'oceano' ? 'text-cyan-300' :
+          paleta === 'sunset' ? 'text-orange-300' :
+          paleta === 'forest' ? 'text-accent' :
+          'text-amber-400 uppercase font-oswald'
+        }`}>Servicios</h4>
+        <ul class="space-y-4 opacity-70">
+          {servicios.map(s => (
+            <li><a href={`/servicios#${s.slug}`} class="hover:opacity-100 transition-opacity">{s.nombre}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class={`text-xl font-bold mb-6 ${
+          paleta === 'oceano' ? 'text-cyan-300' :
+          paleta === 'sunset' ? 'text-orange-300' :
+          paleta === 'forest' ? 'text-accent' :
+          'text-amber-400 uppercase font-oswald'
+        }`}>Contacto</h4>
+        <ul class="space-y-4 opacity-70">
+          <li class="flex items-center gap-3">📍 {info_basica.ciudad}</li>
+          <li class="flex items-center gap-3">📞 {info_basica.telefono}</li>
+          <li class="flex items-center gap-3">✉️ {info_basica.email}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class={`pt-12 border-t ${
+      paleta === 'urban' ? 'border-zinc-800' : 'border-white/10'
+    } flex flex-col md:flex-row justify-between items-center gap-6 opacity-60 text-sm`}>
+      <p>© 2024 {info_basica.nombre}. Todos los derechos reservados.</p>
+      <div class="flex gap-8">
+        <a href="#" class="hover:underline">Privacidad</a>
+        <a href="#" class="hover:underline">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>

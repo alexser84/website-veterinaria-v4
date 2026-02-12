@@ -1,0 +1,86 @@
+{
+    "info_basica": {
+        "nombre": "Vet Vida Marina",
+        "ciudad": "Viña del Mar",
+        "tamano": "mediana",
+        "especialidades": [
+            "perros",
+            "gatos",
+            "exoticos"
+        ],
+        "año_fundacion": 2018,
+        "telefono": "+56 9 1234 5678",
+        "whatsapp": "56912345678",
+        "email": "contacto@vetvidamarina.cl",
+        "direccion": "Av. Marina 123",
+        "horarios": "Lun-Vie: 09:00 - 19:00 | Sáb: 10:00 - 14:00",
+        "region": "Valparaíso",
+        "codigo_postal": "2520000",
+        "coordenadas": {
+            "lat": -33.0117,
+            "lng": -71.5501
+        }
+    },
+    "paginas": {
+        "nosotros": true,
+        "servicios": true,
+        "blog": true,
+        "galeria": true,
+        "testimonios": true,
+        "contacto": true
+    },
+    "servicios": [
+        {
+            "id": 1,
+            "nombre": "Consulta General",
+            "descripcion": "Atención integral para el bienestar de tu mascota.",
+            "slug": "consulta-general",
+            "icon": "Stethoscope",
+            "precio_desde": 25000,
+            "incluye": [
+                "Examen físico",
+                "Control de peso",
+                "Plan de vacunación"
+            ]
+        },
+        {
+            "id": 2,
+            "nombre": "Cirugía Avanzada",
+            "descripcion": "Procedimientos quirúrgicos con tecnología de punta.",
+            "slug": "cirugia",
+            "icon": "Activity",
+            "precio_desde": 150000,
+            "incluye": [
+                "Anestesia monitoreada",
+                "Postoperatorio",
+                "Control de dolor"
+            ]
+        },
+        {
+            "id": 3,
+            "nombre": "Laboratorio Clínico",
+            "descripcion": "Resultados rápidos para diagnósticos precisos.",
+            "slug": "laboratorio",
+            "icon": "FlaskConical",
+            "precio_desde": 15000,
+            "incluye": [
+                "Hemograma",
+                "Perfil bioquímico",
+                "Urocultivo"
+            ]
+        }
+    ],
+    "funcionalidades": {
+        "reserva_online": true,
+        "whatsapp_flotante": true,
+        "formulario_contacto": true,
+        "google_maps": true,
+        "redes_sociales": true
+    },
+    "estilo": {
+        "paleta": "oceano",
+        "target": "familias",
+        "hero_type": "imagen_grande",
+        "layout": "moderno"
+    }
+}

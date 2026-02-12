@@ -1,0 +1,117 @@
+---
+import siteConfig from '../../data/siteConfig.json';
+import { Stethoscope, Activity, FlaskConical, Syringe, Heart, Scissors } from 'lucide-astro';
+
+const paleta = siteConfig.estilo.paleta;
+const { servicios } = siteConfig;
+
+const iconMap = {
+  Stethoscope,
+  Activity,
+  FlaskConical,
+  Syringe,
+  Heart,
+  Scissors
+};
+---
+
+<section class={`py-24 relative overflow-hidden ${
+  paleta === 'oceano' ? 'bg-sky-50' :
+  paleta === 'sunset' ? 'bg-orange-50' :
+  paleta === 'forest' ? 'bg-lime-50' :
+  'bg-white'
+}`}>
+  {paleta === 'oceano' && (
+    <div class="absolute top-0 left-0 w-full h-16 bg-background rounded-b-[100%] shadow-sm"></div>
+  )}
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class={`text-4xl md:text-5xl font-bold mb-4 ${
+        paleta === 'oceano' ? 'text-cyan-900' :
+        paleta === 'sunset' ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600' :
+        paleta === 'forest' ? 'text-green-950' :
+        'text-black uppercase font-bebas tracking-widest'
+      }`}>
+        {paleta === 'oceano' && 'Nuestros Servicios'}
+        {paleta === 'sunset' && 'Servicios que Brillan'}
+        {paleta === 'forest' && 'Servicios Naturales'}
+        {paleta === 'urban' && 'THE SERVICES'}
+      </h2>
+      <p class={`text-lg max-w-2xl mx-auto ${
+        paleta === 'oceano' ? 'text-cyan-700' :
+        paleta === 'sunset' ? 'text-orange-900' :
+        paleta === 'forest' ? 'text-green-800' :
+        'text-zinc-600 font-oswald'
+      }`}>
+        {paleta === 'oceano' && 'Un océano de cuidados para tu mascota.'}
+        {paleta === 'sunset' && 'Iluminando cada etapa de su vida.'}
+        {paleta === 'forest' && 'Cuidado integral que fluye con la naturaleza.'}
+        {paleta === 'urban' && '// RESULTADOS PROFESIONALES SIN EXCUSAS.'}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {servicios.map((servicio) => {
+        const Icon = iconMap[servicio.icon as keyof typeof iconMap] || Heart;
+        return (
+          <div class={`p-8 transition-all duration-300 group ${
+            paleta === 'oceano' ? 'bg-white rounded-[2rem] shadow-ocean hover:-translate-y-2' :
+            paleta === 'sunset' ? 'bg-white/80 backdrop-blur rounded-3xl shadow-lg hover:shadow-sunset/30 border border-orange-100' :
+            paleta === 'forest' ? 'bg-white rounded-br-[4rem] border-4 border-primary/10 hover:border-primary/30' :
+            'bg-light border-2 border-black hover:bg-amber-400 -rotate-2 hover:rotate-0'
+          }`}>
+            <div class={`w-16 h-16 flex items-center justify-center mb-6 rounded-2xl ${
+              paleta === 'oceano' ? 'bg-cyan-100 text-primary' :
+              paleta === 'sunset' ? 'bg-orange-100 text-orange-600' :
+              paleta === 'forest' ? 'bg-lime-100 text-primary' :
+              'bg-black text-white'
+            }`}>
+              <Icon size={32} />
+            </div>
+            <h3 class={`text-2xl font-bold mb-4 ${
+              paleta === 'urban' ? 'font-oswald uppercase' : ''
+            }`}>{servicio.nombre}</h3>
+            <p class="text-zinc-600 mb-6 leading-relaxed">
+              {servicio.descripcion}
+            </p>
+            <ul class="space-y-3 mb-8">
+              {servicio.incluye.map(item => (
+                <li class="flex items-center gap-2 text-sm font-medium">
+                  <span class={paleta === 'urban' ? 'text-black' : 'text-primary'}>
+                    {paleta === 'oceano' && '~'}
+                    {paleta === 'sunset' && '✨'}
+                    {paleta === 'forest' && '🍃'}
+                    {paleta === 'urban' && '>>'}
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div class={`flex items-center justify-between pt-6 border-t ${
+              paleta === 'urban' ? 'border-black' : 'border-zinc-100'
+            }`}>
+              <span class="font-bold text-lg">
+                <span class="opacity-50 text-sm">Desde</span> ${servicio.precio_desde.toLocaleString('es-CL')}
+              </span>
+              <button class={`font-bold transition-all ${
+                paleta === 'oceano' ? 'text-primary hover:translate-x-1' :
+                paleta === 'sunset' ? 'text-pink-600' :
+                paleta === 'forest' ? 'text-green-900 border-b-2 border-green-900' :
+                'text-black underline'
+              }`}>
+                {paleta === 'urban' ? 'RESERVAR →' : 'Ver más'}
+              </button>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+
+  {paleta === 'forest' && (
+      <div class="absolute -bottom-10 -right-10 w-40 h-40 text-primary opacity-10">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M13 7h-2v5.41l4.29 4.29 1.41-1.41L13 11.59z"/></svg>
+      </div>
+  )}
+</section>

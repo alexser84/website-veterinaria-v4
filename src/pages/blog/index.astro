@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import siteConfig from '../data/siteConfig.json';
+
+const paleta = siteConfig.estilo.paleta;
+---
+
+<Layout title={`Blog - ${siteConfig.info_basica.nombre}`}>
+	<Header />
+	<main class="py-24">
+		<div class="container mx-auto px-6">
+			<h1 class={`text-5xl font-bold mb-12 ${paleta === 'urban' ? 'font-bebas' : ''}`}>Mareas de Conocimiento</h1>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[1, 2, 3].map(i => (
+          <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-zinc-100 group">
+            <div class="aspect-video overflow-hidden">
+              <img src={`/images/blog/post-${i}.jpg`} alt="Blog post" class="w-full h-full object-cover transition-transform group-hover:scale-110" />
+            </div>
+            <div class="p-8">
+              <span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Salud Animal</span>
+              <h3 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">10 señales de alerta en tu mascota</h3>
+              <p class="opacity-70 text-sm mb-6">Aprende a identificar síntomas que requieren atención veterinaria inmediata para proteger a tus compañeros...</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs opacity-50">15 Ene 2024</span>
+                <a href="#" class="font-bold text-primary group-hover:translate-x-1 transition-transform inline-block">Leer más →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+		</div>
+	</main>
+	<Footer />
+</Layout>

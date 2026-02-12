@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import Hero from '../components/home/Hero.astro';
+import Services from '../components/home/Services.astro';
+import Contact from '../components/home/Contact.astro';
+import Footer from '../components/common/Footer.astro';
+import siteConfig from '../data/siteConfig.json';
+---
+
+<Layout>
+	<Header />
+	<main>
+		<Hero />
+		<Services />
+    
+    <!-- Why Us placeholder -->
+    <section class="py-24 bg-background">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class={`text-4xl font-bold mb-12 ${siteConfig.estilo.paleta === 'urban' ? 'font-bebas tracking-widest' : ''}`}>Por Qué Elegirnos</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+          <div class="p-8">
+            <div class="text-4xl mb-4">🏆</div>
+            <h3 class="text-xl font-bold mb-2">Excelencia</h3>
+            <p class="opacity-70">Años de experiencia y certificaciones internacionales.</p>
+          </div>
+          <div class="p-8">
+            <div class="text-4xl mb-4">❤️</div>
+            <h3 class="text-xl font-bold mb-2">Amor Real</h3>
+            <p class="opacity-70">Tratamos a cada mascota como si fuera la nuestra.</p>
+          </div>
+          <div class="p-8">
+            <div class="text-4xl mb-4">⚡</div>
+            <h3 class="text-xl font-bold mb-2">Respuesta Rápida</h3>
+            <p class="opacity-70">Estamos disponibles cuando más nos necesitas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+		<Contact />
+	</main>
+	<Footer />
+
+  <!-- WhatsApp Float -->
+  {siteConfig.funcionalidades.whatsapp_flotante && (
+    <a 
+      href={`https://wa.me/${siteConfig.info_basica.whatsapp}`}
+      target="_blank"
+      class={`fixed bottom-8 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-50 transition-transform hover:scale-110 ${
+        siteConfig.estilo.paleta === 'urban' ? 'bg-amber-400 text-black' : 'bg-[#25D366] text-white'
+      }`}
+    >
+      <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.135 0-3.882 1.747-3.882 3.882 0 .205.022.408.065.603l-1.082 3.931 4.051-1.062c.264.137.554.212.848.212 2.135 0 3.882-1.747 3.882-3.882 0-2.135-1.747-3.882-3.882-3.882zm2.147 5.567c-.234.331-.699.412-1.03.177l-1.01-.715c-.279-.197-.359-.579-.177-.866l.338-.535c.182-.287.561-.371.848-.188l1.01.715c.234.165.31.472.177.712l-.156.3zm-.124-2.193l-1.01-.715c-.287-.203-.68-.119-.861.188l-.338.535c-.181.287-.093.667.194.87l1.01.715c.287.203.68.119.861-.188l.338-.535c.181-.287.093-.667-.194-.87zM12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.87 21.13l3.27-1.07C7.81 21.3 9.83 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.84 0-3.56-.63-4.94-1.68l-.33-.25-2.27.75.76-2.23-.23-.34A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+    </a>
+  )}
+</Layout>
